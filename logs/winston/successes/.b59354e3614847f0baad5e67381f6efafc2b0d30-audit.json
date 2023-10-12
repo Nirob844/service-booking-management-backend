@@ -14,6 +14,11 @@
             "date": 1697087220421,
             "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-11-success.log",
             "hash": "f2713bcb1fb907b4189ed7fc351d1acf69abd759eec7c8d0a8adea836ec974dd"
+        },
+        {
+            "date": 1697090430804,
+            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-12-success.log",
+            "hash": "2c3beb3c059fe72aef3ada0067e1cca2619958aa3f844fbf2e1c59e78ac77b04"
         }
     ],
     "hashType": "sha256"

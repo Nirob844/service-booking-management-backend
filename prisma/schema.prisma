@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id        Int        @id @default(autoincrement())
+  id        String     @id @default(uuid())
   name      String
   email     String     @unique
   password  String
@@ -24,25 +24,25 @@ model User {
 }
 
 enum UserRole {
-  superAdmin
+  super_admin
   admin
   user
 }
 
 model Service {
-  id           Int       @id @default(autoincrement())
+  id           String    @id @default(uuid())
   name         String
   description  String
-  price        Float
+  price        Int
   availability Boolean   @default(true)
   bookings     Booking[]
   reviews      Review[]
 }
 
 model Booking {
-  id        Int           @id @default(autoincrement())
-  userId    Int
-  serviceId Int
+  id        String        @id @default(uuid())
+  userId    String
+  serviceId String
   status    BookingStatus @default(Pending)
   user      User          @relation(fields: [userId], references: [id])
   service   Service       @relation(fields: [serviceId], references: [id])
@@ -56,30 +56,30 @@ enum BookingStatus {
 
 // Review model for user reviews and ratings
 model Review {
-  id        Int     @id @default(autoincrement())
-  userId    Int
-  serviceId Int
-  rating    Int
+  id        String  @id @default(uuid())
+  userId    String
+  serviceId String
+  rating    String
   comment   String
   user      User    @relation(fields: [userId], references: [id])
   service   Service @relation(fields: [serviceId], references: [id])
 }
 
 model Blog {
-  id    Int    @id @default(autoincrement())
-  title Int
+  id    String @id @default(uuid())
+  title String
   body  String
 }
 
 model Feedback {
-  id      Int    @id @default(autoincrement())
-  userId  Int
+  id      String @id @default(uuid())
+  userId  String
   user    User   @relation(fields: [userId], references: [id])
   comment String
 }
 
 model FAQ {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   question String
   answer   String
 }
