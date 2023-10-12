@@ -15,7 +15,7 @@ model User {
   name      String
   email     String     @unique
   password  String
-  role      UserRole   @default(user)
+  role      UserRole   @default(customer)
   bookings  Booking[]
   reviews   Review[]
   feedbacks Feedback[]
@@ -26,7 +26,7 @@ model User {
 enum UserRole {
   super_admin
   admin
-  user
+  customer
 }
 
 model Service {

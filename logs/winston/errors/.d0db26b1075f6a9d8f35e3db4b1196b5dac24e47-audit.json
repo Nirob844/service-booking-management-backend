@@ -19,6 +19,11 @@
             "date": 1697090430812,
             "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-12-error.log",
             "hash": "5c1509d0ac3a66d9bf95e419dec78998ebebfb307cb2eed8d009285f2f81c742"
+        },
+        {
+            "date": 1697101683104,
+            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-15-error.log",
+            "hash": "004bc63bc072736a0c30fe5ac803b99ec321d4877099b5bdaeb6ed983a701fbc"
         }
     ],
     "hashType": "sha256"
