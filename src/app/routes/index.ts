@@ -1,6 +1,9 @@
 import express from 'express';
+import { ReviewAndRatingRoutes } from '../modules/ReviewAndRating/ReviewAndRating.routes';
 import { AuthRoutes } from '../modules/auth/auth.routes';
+import { CategoryRoutes } from '../modules/category/category.routes';
 import { ProfileRoutes } from '../modules/profile/profile.routes';
+import { ServiceRoutes } from '../modules/service/service.routes';
 import { UserRoutes } from '../modules/user/user.routes';
 
 const router = express.Router();
@@ -18,6 +21,18 @@ const moduleRoutes = [
   {
     path: '/profile',
     route: ProfileRoutes,
+  },
+  {
+    path: '/categories',
+    route: CategoryRoutes,
+  },
+  {
+    path: '/services',
+    route: ServiceRoutes,
+  },
+  {
+    path: '/review-and-rating',
+    route: ReviewAndRatingRoutes,
   },
 ];
 

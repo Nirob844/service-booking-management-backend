@@ -11,14 +11,16 @@ datasource db {
 }
 
 model User {
-  id        String     @id @default(uuid())
-  name      String
-  email     String     @unique
-  password  String
-  role      UserRole   @default(customer)
-  bookings  Booking[]
-  reviews   Review[]
-  feedbacks Feedback[]
+  id               String            @id @default(uuid())
+  name             String
+  email            String            @unique
+  password         String
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  role             UserRole          @default(customer)
+  bookings         Booking[]
+  reviewAndRatings ReviewAndRating[]
+  feedbacks        Feedback[]
 
   @@map("users")
 }
@@ -29,23 +31,50 @@ enum UserRole {
   customer
 }
 
+model Category {
+  id        String    @id @default(uuid())
+  title     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  services  Service[]
+
+  @@map("category")
+}
+
 model Service {
-  id           String    @id @default(uuid())
-  name         String
-  description  String
-  price        Int
-  availability Boolean   @default(true)
-  bookings     Booking[]
-  reviews      Review[]
+  id               String            @id @default(uuid())
+  title            String
+  description      String
+  price            Int
+  img              String?
+  availability     Boolean           @default(true)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  categoryId       String
+  category         Category          @relation(fields: [categoryId], references: [id])
+  reviewAndRatings ReviewAndRating[]
+  bookingServices  BookingService[]
 }
 
 model Booking {
-  id        String        @id @default(uuid())
-  userId    String
-  serviceId String
-  status    BookingStatus @default(Pending)
-  user      User          @relation(fields: [userId], references: [id])
-  service   Service       @relation(fields: [serviceId], references: [id])
+  id             String           @id @default(uuid())
+  userId         String
+  status         BookingStatus    @default(Pending)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  user           User             @relation(fields: [userId], references: [id])
+  BookingService BookingService[]
+}
+
+model BookingService {
+  id          String   @id @default(uuid())
+  bookingDate DateTime
+  bookingId   String
+  serviceId   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  booking     Booking  @relation(fields: [bookingId], references: [id])
+  Service     Service  @relation(fields: [serviceId], references: [id])
 }
 
 enum BookingStatus {
@@ -55,31 +84,41 @@ enum BookingStatus {
 }
 
 // Review model for user reviews and ratings
-model Review {
-  id        String  @id @default(uuid())
+model ReviewAndRating {
+  id        String   @id @default(uuid())
+  rating    Int
+  review    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   userId    String
   serviceId String
-  rating    String
-  comment   String
-  user      User    @relation(fields: [userId], references: [id])
-  service   Service @relation(fields: [serviceId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  service   Service  @relation(fields: [serviceId], references: [id])
+
+  @@map("review_and_rating")
 }
 
 model Blog {
-  id    String @id @default(uuid())
-  title String
-  body  String
+  id        String   @id @default(uuid())
+  title     String
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Feedback {
-  id      String @id @default(uuid())
-  userId  String
-  user    User   @relation(fields: [userId], references: [id])
-  comment String
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  comment   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model FAQ {
-  id       String @id @default(uuid())
-  question String
-  answer   String
+  id        String   @id @default(uuid())
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
