@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  name      String
+  email     String     @unique
+  password  String
+  role      UserRole   @default(user)
+  bookings  Booking[]
+  reviews   Review[]
+  feedbacks Feedback[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  superAdmin
+  admin
+  user
+}
+
+model Service {
+  id           Int       @id @default(autoincrement())
+  name         String
+  description  String
+  price        Float
+  availability Boolean   @default(true)
+  bookings     Booking[]
+  reviews      Review[]
+}
+
+model Booking {
+  id        Int           @id @default(autoincrement())
+  userId    Int
+  serviceId Int
+  status    BookingStatus @default(Pending)
+  user      User          @relation(fields: [userId], references: [id])
+  service   Service       @relation(fields: [serviceId], references: [id])
+}
+
+enum BookingStatus {
+  Pending
+  Accepted
+  Cancelled
+}
+
+// Review model for user reviews and ratings
+model Review {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  serviceId Int
+  rating    Int
+  comment   String
+  user      User    @relation(fields: [userId], references: [id])
+  service   Service @relation(fields: [serviceId], references: [id])
+}
+
+model Blog {
+  id    Int    @id @default(autoincrement())
+  title Int
+  body  String
+}
+
+model Feedback {
+  id      Int    @id @default(autoincrement())
+  userId  Int
+  user    User   @relation(fields: [userId], references: [id])
+  comment String
+}
+
+model FAQ {
+  id       Int    @id @default(autoincrement())
+  question String
+  answer   String
+}
