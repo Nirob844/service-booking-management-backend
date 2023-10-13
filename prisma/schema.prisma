@@ -57,24 +57,26 @@ model Service {
 }
 
 model Booking {
-  id             String           @id @default(uuid())
-  userId         String
-  status         BookingStatus    @default(Pending)
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  user           User             @relation(fields: [userId], references: [id])
-  BookingService BookingService[]
+  id              String           @id @default(uuid())
+  userId          String
+  status          BookingStatus    @default(Pending)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  user            User             @relation(fields: [userId], references: [id])
+  bookingServices BookingService[]
 }
 
 model BookingService {
   id          String   @id @default(uuid())
-  bookingDate DateTime
   bookingId   String
   serviceId   String
+  bookingDate String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   booking     Booking  @relation(fields: [bookingId], references: [id])
-  Service     Service  @relation(fields: [serviceId], references: [id])
+  service     Service  @relation(fields: [serviceId], references: [id])
+
+  @@map("booking_service")
 }
 
 enum BookingStatus {

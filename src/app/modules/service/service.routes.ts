@@ -9,7 +9,7 @@ router.get('/', ServiceController.getAllFromDB);
 router.get('/:id', ServiceController.getDataById);
 router.get('/:categoryId/category', ServiceController.getDataByCategoryId);
 router.post(
-  '/create-Service',
+  '/create-service',
   auth(ENUM_USER_ROLE.ADMIN),
   ServiceController.insertIntoDB
 );

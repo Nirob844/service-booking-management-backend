@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\project\\level-2\\service-booking-management-backend\\logs\\winston\\successes\\.09a05b4e00db2d878c9e6a149f0474d3d4ffa36c-audit.json",
+    "files": [
+        {
+            "date": 1697166865216,
+            "name": "C:\\project\\level-2\\service-booking-management-backend\\logs\\winston\\successes\\backend-2023-13-10-09-success.log",
+            "hash": "3be6f8d6fb4cc28dda05086b1a33019da80ba5520a89ee41263486b481862877"
+        },
+        {
+            "date": 1697173979576,
+            "name": "C:\\project\\level-2\\service-booking-management-backend\\logs\\winston\\successes\\backend-2023-13-10-11-success.log",
+            "hash": "280029b968be3e5af148fd7822e7be793f4c055cf39b54f46a82aad241d03a2f"
+        }
+    ],
+    "hashType": "sha256"
+}
