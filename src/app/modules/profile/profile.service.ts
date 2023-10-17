@@ -9,6 +9,21 @@ const getProfileFromDB = async (userId: string): Promise<User | null> => {
   });
   return result; // Allow null values
 };
+
+const updateOneInDB = async (
+  id: string,
+  payload: Partial<User>
+): Promise<User> => {
+  const result = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: payload,
+  });
+  return result;
+};
+
 export const ProfileService = {
   getProfileFromDB,
+  updateOneInDB,
 };

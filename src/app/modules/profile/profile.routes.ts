@@ -14,5 +14,14 @@ router.get(
   ),
   ProfileController.getProfileFromDB
 );
+router.patch(
+  '/',
+  auth(
+    ENUM_USER_ROLE.SUPER_ADMIN,
+    ENUM_USER_ROLE.ADMIN,
+    ENUM_USER_ROLE.CUSTOMER
+  ),
+  ProfileController.updateOneInDB
+);
 
 export const ProfileRoutes = router;
