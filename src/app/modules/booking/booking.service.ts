@@ -63,7 +63,20 @@ const getAllFromDB = async (
   userId: string,
   role: string
 ): Promise<Booking[]> => {
-  if (role === 'admin') {
+  if (role === 'super_admin') {
+    // Administrators can access all Bookings
+    const allBookings = await prisma.booking.findMany({
+      include: {
+        user: true,
+        bookingServices: {
+          include: {
+            service: true,
+          },
+        },
+      },
+    });
+    return allBookings;
+  } else if (role === 'admin') {
     // Administrators can access all Bookings
     const allBookings = await prisma.booking.findMany({
       include: {

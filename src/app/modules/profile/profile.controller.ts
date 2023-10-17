@@ -6,7 +6,6 @@ import { ProfileService } from './profile.service';
 
 const getProfileFromDB = catchAsync(async (req: Request, res: Response) => {
   const { userId } = req.user as any;
-  console.log('controller', userId);
   const result = await ProfileService.getProfileFromDB(userId);
   sendResponse(res, {
     statusCode: httpStatus.OK,

@@ -15,6 +15,7 @@ model User {
   name             String
   email            String            @unique
   password         String
+  image            String?
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
   role             UserRole          @default(customer)
@@ -34,6 +35,7 @@ enum UserRole {
 model Category {
   id        String    @id @default(uuid())
   title     String
+  image     String?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   services  Service[]
@@ -46,7 +48,7 @@ model Service {
   title            String
   description      String
   price            Int
-  img              String?
+  image            String?
   availability     Boolean           @default(true)
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
@@ -104,6 +106,7 @@ model Blog {
   id        String   @id @default(uuid())
   title     String
   body      String
+  image     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -1,50 +1,50 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\.b59354e3614847f0baad5e67381f6efafc2b0d30-audit.json",
+  "files": [
+    {
+      "date": 1697085533824,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-10-success.log",
+      "hash": "aa44bbc6d3939c63ace54d6444172b29da717af95635706109fd7ee73cc35f8f"
     },
-    "auditLog": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\.b59354e3614847f0baad5e67381f6efafc2b0d30-audit.json",
-    "files": [
-        {
-            "date": 1697085533824,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-10-success.log",
-            "hash": "aa44bbc6d3939c63ace54d6444172b29da717af95635706109fd7ee73cc35f8f"
-        },
-        {
-            "date": 1697087220421,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-11-success.log",
-            "hash": "f2713bcb1fb907b4189ed7fc351d1acf69abd759eec7c8d0a8adea836ec974dd"
-        },
-        {
-            "date": 1697090430804,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-12-success.log",
-            "hash": "2c3beb3c059fe72aef3ada0067e1cca2619958aa3f844fbf2e1c59e78ac77b04"
-        },
-        {
-            "date": 1697101683097,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-15-success.log",
-            "hash": "6f0241e0e6606fcb757c37ba2d3f0d241d23b1f8cc6f17fda5593b7383e8fc7b"
-        },
-        {
-            "date": 1697105723849,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-16-success.log",
-            "hash": "2ddd9c1d32918bdca9d6bdbc2c48d0ca14ac9db5d548ae89ddf0b70722a40e09"
-        },
-        {
-            "date": 1697108940001,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-17-success.log",
-            "hash": "3790fc58e6d7add26f5eb71b453c700c55f335c4dc502fcf2f9087b80dcca2c5"
-        },
-        {
-            "date": 1697117283221,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-19-success.log",
-            "hash": "36b8a3cee0c551c1d8332769be73afcd1574aa1224ae57bab25a9cd6980ac310"
-        },
-        {
-            "date": 1697119274289,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-20-success.log",
-            "hash": "eda76a67fa4af84e8e1b28c0f98745580caf78929c1c67f6a7c39b689767a230"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1697087220421,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-11-success.log",
+      "hash": "f2713bcb1fb907b4189ed7fc351d1acf69abd759eec7c8d0a8adea836ec974dd"
+    },
+    {
+      "date": 1697090430804,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-12-success.log",
+      "hash": "2c3beb3c059fe72aef3ada0067e1cca2619958aa3f844fbf2e1c59e78ac77b04"
+    },
+    {
+      "date": 1697101683097,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-15-success.log",
+      "hash": "6f0241e0e6606fcb757c37ba2d3f0d241d23b1f8cc6f17fda5593b7383e8fc7b"
+    },
+    {
+      "date": 1697105723849,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-16-success.log",
+      "hash": "2ddd9c1d32918bdca9d6bdbc2c48d0ca14ac9db5d548ae89ddf0b70722a40e09"
+    },
+    {
+      "date": 1697108940001,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-17-success.log",
+      "hash": "3790fc58e6d7add26f5eb71b453c700c55f335c4dc502fcf2f9087b80dcca2c5"
+    },
+    {
+      "date": 1697117283221,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-19-success.log",
+      "hash": "36b8a3cee0c551c1d8332769be73afcd1574aa1224ae57bab25a9cd6980ac310"
+    },
+    {
+      "date": 1697119274289,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\successes\\backend-2023-12-10-20-success.log",
+      "hash": "eda76a67fa4af84e8e1b28c0f98745580caf78929c1c67f6a7c39b689767a230"
+    }
+  ],
+  "hashType": "sha256"
 }

@@ -10,17 +10,17 @@ router.get('/:id', ServiceController.getDataById);
 router.get('/:categoryId/category', ServiceController.getDataByCategoryId);
 router.post(
   '/create-service',
-  auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   ServiceController.insertIntoDB
 );
 router.patch(
   '/:id',
-  auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   ServiceController.updateOneInDB
 );
 router.delete(
   '/:id',
-  auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   ServiceController.deleteByIdFromDB
 );
 

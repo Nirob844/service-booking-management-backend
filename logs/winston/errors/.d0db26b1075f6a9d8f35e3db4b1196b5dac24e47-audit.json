@@ -1,50 +1,50 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\.d0db26b1075f6a9d8f35e3db4b1196b5dac24e47-audit.json",
+  "files": [
+    {
+      "date": 1697085533829,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-10-error.log",
+      "hash": "9f734a793394a8e06c79fb9bf45aec237963f82252ad4da95fffe5bd0acdd355"
     },
-    "auditLog": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\.d0db26b1075f6a9d8f35e3db4b1196b5dac24e47-audit.json",
-    "files": [
-        {
-            "date": 1697085533829,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-10-error.log",
-            "hash": "9f734a793394a8e06c79fb9bf45aec237963f82252ad4da95fffe5bd0acdd355"
-        },
-        {
-            "date": 1697087220426,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-11-error.log",
-            "hash": "d75fc0772c598ef19902e4558b270726990a69b6b87d034898e2b5675d37cd4f"
-        },
-        {
-            "date": 1697090430812,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-12-error.log",
-            "hash": "5c1509d0ac3a66d9bf95e419dec78998ebebfb307cb2eed8d009285f2f81c742"
-        },
-        {
-            "date": 1697101683104,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-15-error.log",
-            "hash": "004bc63bc072736a0c30fe5ac803b99ec321d4877099b5bdaeb6ed983a701fbc"
-        },
-        {
-            "date": 1697105723854,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-16-error.log",
-            "hash": "22caaff5624430bbb1c52443aaf5823779615f20d3af7e4761a506a8bb46c793"
-        },
-        {
-            "date": 1697108940009,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-17-error.log",
-            "hash": "e4137b08b526e4a47a1c2852ea03c1eea47de951cd436ec9a804501051a88616"
-        },
-        {
-            "date": 1697117283233,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-19-error.log",
-            "hash": "9b7256dea95cc1caab550d02834bad142d68e8a51bad78993a8ca9fd787d7aad"
-        },
-        {
-            "date": 1697119274294,
-            "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-20-error.log",
-            "hash": "65579732dea5ac525cc069f2228b09f921708989ac1c38fa77279bd8716572e9"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1697087220426,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-11-error.log",
+      "hash": "d75fc0772c598ef19902e4558b270726990a69b6b87d034898e2b5675d37cd4f"
+    },
+    {
+      "date": 1697090430812,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-12-error.log",
+      "hash": "5c1509d0ac3a66d9bf95e419dec78998ebebfb307cb2eed8d009285f2f81c742"
+    },
+    {
+      "date": 1697101683104,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-15-error.log",
+      "hash": "004bc63bc072736a0c30fe5ac803b99ec321d4877099b5bdaeb6ed983a701fbc"
+    },
+    {
+      "date": 1697105723854,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-16-error.log",
+      "hash": "22caaff5624430bbb1c52443aaf5823779615f20d3af7e4761a506a8bb46c793"
+    },
+    {
+      "date": 1697108940009,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-17-error.log",
+      "hash": "e4137b08b526e4a47a1c2852ea03c1eea47de951cd436ec9a804501051a88616"
+    },
+    {
+      "date": 1697117283233,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-19-error.log",
+      "hash": "9b7256dea95cc1caab550d02834bad142d68e8a51bad78993a8ca9fd787d7aad"
+    },
+    {
+      "date": 1697119274294,
+      "name": "C:\\project\\level-2\\service-booking-management\\logs\\winston\\errors\\backend-2023-12-10-20-error.log",
+      "hash": "65579732dea5ac525cc069f2228b09f921708989ac1c38fa77279bd8716572e9"
+    }
+  ],
+  "hashType": "sha256"
 }
