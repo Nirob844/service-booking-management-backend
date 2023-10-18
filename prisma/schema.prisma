@@ -22,6 +22,7 @@ model User {
   bookings         Booking[]
   reviewAndRatings ReviewAndRating[]
   feedbacks        Feedback[]
+  addCarts         AddCart[]
 
   @@map("users")
 }
@@ -56,6 +57,7 @@ model Service {
   category         Category          @relation(fields: [categoryId], references: [id])
   reviewAndRatings ReviewAndRating[]
   bookingServices  BookingService[]
+  addCarts         AddCart[]
 }
 
 model Booking {
@@ -126,4 +128,13 @@ model FAQ {
   answer    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model AddCart {
+  id        String @id @default(uuid())
+  userId    String
+  serviceId String
+
+  user    User    @relation(fields: [userId], references: [id])
+  service Service @relation(fields: [serviceId], references: [id])
 }

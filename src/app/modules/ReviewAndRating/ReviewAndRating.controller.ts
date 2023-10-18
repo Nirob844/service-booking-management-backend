@@ -1,9 +1,7 @@
 import { ReviewAndRating } from '@prisma/client';
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { paginationFields } from '../../../constants/pagination';
 import catchAsync from '../../../shared/catchAsync';
-import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
 import { ReviewAndRatingService } from './ReviewAndRating.service';
 
@@ -39,17 +37,12 @@ const getDataById = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getDataByServiceId = catchAsync(async (req: Request, res: Response) => {
-  const options = pick(req.query, paginationFields);
-  const result = await ReviewAndRatingService.getDataByServiceId(
-    req.params.serviceId,
-    options
-  );
+  const result = await ReviewAndRatingService.getDataByServiceId(req.params.id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Service data fetched!!',
-    meta: result.meta,
-    data: result.data,
+    message: ' data fetched!!',
+    data: result,
   });
 });
 
