@@ -4,6 +4,7 @@ import { AddCartRoutes } from '../modules/addCart/addCart.routes';
 import { AuthRoutes } from '../modules/auth/auth.routes';
 import { BookingRoutes } from '../modules/booking/booking.routes';
 import { CategoryRoutes } from '../modules/category/category.routes';
+import { FeedbackRoutes } from '../modules/feedback/feedback.routes';
 import { ProfileRoutes } from '../modules/profile/profile.routes';
 import { ServiceRoutes } from '../modules/service/service.routes';
 import { UserRoutes } from '../modules/user/user.routes';
@@ -43,6 +44,10 @@ const moduleRoutes = [
   {
     path: '/add-carts',
     route: AddCartRoutes,
+  },
+  {
+    path: '/feedbacks',
+    route: FeedbackRoutes,
   },
 ];
 
