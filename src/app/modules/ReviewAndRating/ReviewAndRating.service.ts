@@ -1,4 +1,7 @@
 import { ReviewAndRating } from '@prisma/client';
+import { paginationHelpers } from '../../../helpers/paginationHelper';
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
 
 const insertIntoDB = async (
@@ -35,6 +38,44 @@ const getDataById = async (id: string): Promise<ReviewAndRating | null> => {
   return result;
 };
 
+const getDataByServiceId = async (
+  serviceId: string,
+  options: IPaginationOptions
+): Promise<IGenericResponse<ReviewAndRating[]>> => {
+  const { limit, page, skip } = paginationHelpers.calculatePagination(options);
+
+  const results = await prisma.reviewAndRating.findMany({
+    include: {
+      service: true,
+    },
+    where: {
+      serviceId: serviceId,
+    },
+    skip,
+    take: limit,
+    orderBy:
+      options.sortBy && options.sortOrder
+        ? { [options.sortBy]: options.sortOrder }
+        : {
+            createdAt: 'desc',
+          },
+  });
+  const total = await prisma.reviewAndRating.count({
+    where: {
+      serviceId: serviceId,
+    },
+  });
+
+  return {
+    meta: {
+      total,
+      page,
+      limit,
+    },
+    data: results,
+  };
+};
+
 const updateOneInDB = async (
   id: string,
   payload: Partial<ReviewAndRating>
@@ -61,6 +102,7 @@ export const ReviewAndRatingService = {
   insertIntoDB,
   getAllFromDB,
   getDataById,
+  getDataByServiceId,
   updateOneInDB,
   deleteByIdFromDB,
 };
