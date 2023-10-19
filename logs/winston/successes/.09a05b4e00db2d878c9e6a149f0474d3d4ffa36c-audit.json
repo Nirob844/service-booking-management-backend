@@ -154,6 +154,16 @@
             "date": 1697708255152,
             "name": "C:\\project\\level-2\\service-booking-management-backend\\logs\\winston\\successes\\backend-2023-19-10-15-success.log",
             "hash": "b92b9ecccf37cad9184128453893720d6d588900abb870f4a45448be080e9dcd"
+        },
+        {
+            "date": 1697714546577,
+            "name": "C:\\project\\level-2\\service-booking-management-backend\\logs\\winston\\successes\\backend-2023-19-10-17-success.log",
+            "hash": "c8defe51d5dbceed033becf9116a834ee342e7f8beccf687d3eb253345470139"
+        },
+        {
+            "date": 1697717978395,
+            "name": "C:\\project\\level-2\\service-booking-management-backend\\logs\\winston\\successes\\backend-2023-19-10-18-success.log",
+            "hash": "7cb83dc76e40883062f90eeb84eb942df8b79cce44f3be0799615b5f7b455fe8"
         }
     ],
     "hashType": "sha256"

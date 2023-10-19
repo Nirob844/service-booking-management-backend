@@ -7,12 +7,20 @@ import routes from './app/routes';
 import cookieParser from 'cookie-parser';
 
 const app: Application = express();
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+app.use('*', cors(corsOptions));
+// app.use(
+//   cors({
+//     origin: [
+//       'https://service-booking-management-forentend-2wg1ytxi8-nirob844.vercel.app/',
+//       'http://localhost:3000',
+//     ],
+//     credentials: true,
+//   })
+// );
 //app.use(cors());
 app.use(cookieParser());
 
