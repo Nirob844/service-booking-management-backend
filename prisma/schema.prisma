@@ -51,6 +51,7 @@ model Service {
   price            Int
   image            String?
   availability     Boolean           @default(true)
+  status           ServiceStatus     @default(upcoming)
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
   categoryId       String
@@ -58,6 +59,11 @@ model Service {
   reviewAndRatings ReviewAndRating[]
   bookingServices  BookingService[]
   addCarts         AddCart[]
+}
+
+enum ServiceStatus {
+  upcoming
+  inProgress
 }
 
 model Booking {
@@ -125,7 +131,7 @@ model Feedback {
 model FAQ {
   id        String   @id @default(uuid())
   question  String
-  answer    String
+  answer    String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -5,6 +5,7 @@ import { AuthRoutes } from '../modules/auth/auth.routes';
 import { BlogRoutes } from '../modules/blog/blog.routes';
 import { BookingRoutes } from '../modules/booking/booking.routes';
 import { CategoryRoutes } from '../modules/category/category.routes';
+import { FAQRoutes } from '../modules/faq/faq.routes';
 import { FeedbackRoutes } from '../modules/feedback/feedback.routes';
 import { ProfileRoutes } from '../modules/profile/profile.routes';
 import { ServiceRoutes } from '../modules/service/service.routes';
@@ -53,6 +54,10 @@ const moduleRoutes = [
   {
     path: '/blogs',
     route: BlogRoutes,
+  },
+  {
+    path: '/faqs',
+    route: FAQRoutes,
   },
 ];
 

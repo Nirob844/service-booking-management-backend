@@ -1,8 +1,9 @@
-export const serviceSearchAbleFields: string[] = ['title'];
+export const serviceSearchAbleFields: string[] = ['title', 'status'];
 
 export const serviceFilterAbleFields: string[] = [
   'searchTerm',
   'title',
+  'status',
   'minPrice',
   'maxPrice',
   'categoryId',

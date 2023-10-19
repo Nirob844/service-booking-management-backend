@@ -1,58 +1,66 @@
-import { AddCart } from '@prisma/client';
+import { FAQ } from '@prisma/client';
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
-import { AddCartService } from './addCart.service';
+import { FAQService } from './faq.service';
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await AddCartService.insertIntoDB(req.body);
-  sendResponse<AddCart>(res, {
+  const result = await FAQService.insertIntoDB(req.body);
+  sendResponse<FAQ>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'AddCart Created!!',
+    message: 'FAQ Created!!',
     data: result,
   });
 });
 
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const { userId, role } = req.user as any;
-
-  const result = await AddCartService.getAllFromDB(userId, role);
+  const result = await FAQService.getAllFromDB();
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: ' data fetched!!',
+    data: result,
+  });
+});
 
+const getDataById = catchAsync(async (req: Request, res: Response) => {
+  const result = await FAQService.getDataById(req.params.id);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'FAQ data fetched!!',
     data: result,
   });
 });
 
 const updateOneInDB = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await AddCartService.updateOneInDB(id, req.body);
+  const result = await FAQService.updateOneInDB(id, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'updated successfully',
+    message: 'FAQ updated successfully',
     data: result,
   });
 });
 
 const deleteByIdFromDB = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await AddCartService.deleteByIdFromDB(id);
+  const result = await FAQService.deleteByIdFromDB(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'delete successfully',
+    message: ' delete successfully',
     data: result,
   });
 });
 
-export const AddCartController = {
+export const FAQController = {
   insertIntoDB,
   getAllFromDB,
+  getDataById,
   updateOneInDB,
   deleteByIdFromDB,
 };
