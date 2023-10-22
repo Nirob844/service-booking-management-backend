@@ -20,12 +20,102 @@ const insertIntoDB = async (data: Service): Promise<Service> => {
   return result;
 };
 
+// const getAllFromDB = async (
+//   filters: any,
+//   options: IPaginationOptions
+// ): Promise<IGenericResponse<Service[]>> => {
+//   const { limit, page, skip } = paginationHelpers.calculatePagination(options);
+//   const { searchTerm, minPrice, maxPrice, ...filterData } = filters;
+
+//   const andConditions = [];
+
+//   if (searchTerm) {
+//     andConditions.push({
+//       OR: serviceSearchAbleFields.map(field => ({
+//         [field]: {
+//           contains: searchTerm,
+//           mode: 'insensitive',
+//         },
+//       })),
+//     });
+//   }
+
+//   if (Object.keys(filterData).length > 0) {
+//     andConditions.push({
+//       AND: Object.keys(filterData).map(key => {
+//         if (serviceRelationalFields.includes(key)) {
+//           return {
+//             [serviceRelationalFieldsMapper[key]]: {
+//               id: (filterData as any)[key],
+//             },
+//           };
+//         } else {
+//           return {
+//             [key]: {
+//               equals: (filterData as any)[key],
+//             },
+//           };
+//         }
+//       }),
+//     });
+//   }
+
+//   // Convert minPrice and maxPrice to floats
+//   const minPriceFloat = parseFloat(minPrice);
+//   const maxPriceFloat = parseFloat(maxPrice);
+//   if (!isNaN(minPriceFloat)) {
+//     andConditions.push({
+//       price: {
+//         gte: minPriceFloat,
+//       },
+//     });
+//   }
+
+//   if (!isNaN(maxPriceFloat)) {
+//     andConditions.push({
+//       price: {
+//         lte: maxPriceFloat,
+//       },
+//     });
+//   }
+
+//   const whereConditions: Prisma.ServiceWhereInput =
+//     andConditions.length > 0 ? { AND: andConditions } : {};
+
+//   const result = await prisma.service.findMany({
+//     include: {
+//       category: true,
+//     },
+//     where: whereConditions,
+//     skip,
+//     take: limit,
+//     orderBy:
+//       options.sortBy && options.sortOrder
+//         ? { [options.sortBy]: options.sortOrder }
+//         : {
+//             createdAt: 'desc',
+//           },
+//   });
+//   const total = await prisma.service.count({
+//     where: whereConditions,
+//   });
+
+//   return {
+//     meta: {
+//       total,
+//       page,
+//       limit,
+//     },
+//     data: result,
+//   };
+// };
+
 const getAllFromDB = async (
   filters: any,
   options: IPaginationOptions
 ): Promise<IGenericResponse<Service[]>> => {
   const { limit, page, skip } = paginationHelpers.calculatePagination(options);
-  const { searchTerm, minPrice, maxPrice, ...filterData } = filters;
+  const { searchTerm, minPrice, maxPrice, status, ...filterData } = filters;
 
   const andConditions = [];
 
@@ -37,6 +127,14 @@ const getAllFromDB = async (
           mode: 'insensitive',
         },
       })),
+    });
+  }
+
+  if (status) {
+    andConditions.push({
+      status: {
+        equals: status, // Filter by the 'status' field
+      },
     });
   }
 

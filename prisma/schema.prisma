@@ -59,6 +59,8 @@ model Service {
   reviewAndRatings ReviewAndRating[]
   bookingServices  BookingService[]
   addCarts         AddCart[]
+
+  @@map("service")
 }
 
 enum ServiceStatus {
