@@ -1,4 +1,7 @@
 import { Blog } from '@prisma/client';
+import { paginationHelpers } from '../../../helpers/paginationHelper';
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
 
 const insertIntoDB = async (data: Blog): Promise<Blog> => {
@@ -9,9 +12,36 @@ const insertIntoDB = async (data: Blog): Promise<Blog> => {
   return result;
 };
 
-const getAllFromDB = async (): Promise<Blog[]> => {
-  const result = await prisma.blog.findMany({});
-  return result;
+// const getAllFromDB = async (): Promise<Blog[]> => {
+//   const result = await prisma.blog.findMany({});
+//   return result;
+// };
+
+const getAllFromDB = async (
+  options: IPaginationOptions
+): Promise<IGenericResponse<Blog[]>> => {
+  const { limit, page, skip } = paginationHelpers.calculatePagination(options);
+
+  const result = await prisma.blog.findMany({
+    skip,
+    take: limit,
+    orderBy:
+      options.sortBy && options.sortOrder
+        ? { [options.sortBy]: options.sortOrder }
+        : {
+            createdAt: 'desc',
+          },
+  });
+  const total = await prisma.blog.count({}); // Provide an empty object to count all blogs
+
+  return {
+    meta: {
+      total,
+      page,
+      limit,
+    },
+    data: result,
+  };
 };
 
 const getDataById = async (id: string): Promise<Blog | null> => {

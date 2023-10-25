@@ -20,7 +20,6 @@ const insertIntoDB = async (data: Service): Promise<Service> => {
   return result;
 };
 
-// const getAllFromDB = async (
 //   filters: any,
 //   options: IPaginationOptions
 // ): Promise<IGenericResponse<Service[]>> => {
