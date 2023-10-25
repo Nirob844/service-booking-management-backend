@@ -10,18 +10,20 @@ const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalEr
 const routes_1 = __importDefault(require("./app/routes"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const app = (0, express_1.default)();
-// const corsOptions = {
-//   origin: true,
-//   credentials: true,
-// };
-// app.use('*', cors(corsOptions));
-app.use((0, cors_1.default)({
-    origin: [
-        'https://service-booking-management-forentend.vercel.app',
-        'http://localhost:3000',
-    ],
+const corsOptions = {
+    origin: true,
     credentials: true,
-}));
+};
+app.use('*', (0, cors_1.default)(corsOptions));
+// app.use(
+//   cors({
+//     origin: [
+//       'https://service-booking-management-forentend.vercel.app',
+//       'http://localhost:3000',
+//     ],
+//     credentials: true,
+//   })
+// );
 //app.use(cors());
 app.use((0, cookie_parser_1.default)());
 //parser
