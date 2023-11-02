@@ -8,7 +8,11 @@ import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import prisma from '../../../shared/prisma';
-import { ILoginUser, ILoginUserResponse } from './auth.interface';
+import {
+  IChangePassword,
+  ILoginUser,
+  ILoginUserResponse,
+} from './auth.interface';
 
 const insertIntoDB = async (data: User): Promise<User> => {
   const result = await prisma.user.create({
@@ -57,7 +61,37 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   };
 };
 
+const changePassword = async (
+  user: any,
+  payload: IChangePassword
+): Promise<void> => {
+  const { oldPassword, newPassword } = payload;
+
+  // Check if the user exists
+  const existingUser = await prisma.user.findUnique({
+    where: { id: user?.userId },
+  });
+
+  if (!existingUser) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
+  }
+
+  // Verify the old password
+  if (!(await isPasswordMatched(oldPassword, existingUser.password))) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Old Password is incorrect');
+  }
+
+  // Update the password
+  await prisma.user.update({
+    where: { id: user?.userId },
+    data: {
+      password: newPassword,
+    },
+  });
+};
+
 export const AuthService = {
   insertIntoDB,
   loginUser,
+  changePassword,
 };

@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogService = void 0;
+const paginationHelper_1 = require("../../../helpers/paginationHelper");
 const prisma_1 = __importDefault(require("../../../shared/prisma"));
 const insertIntoDB = (data) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.blog.create({
@@ -20,9 +21,30 @@ const insertIntoDB = (data) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return result;
 });
-const getAllFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.blog.findMany({});
-    return result;
+// const getAllFromDB = async (): Promise<Blog[]> => {
+//   const result = await prisma.blog.findMany({});
+//   return result;
+// };
+const getAllFromDB = (options) => __awaiter(void 0, void 0, void 0, function* () {
+    const { limit, page, skip } = paginationHelper_1.paginationHelpers.calculatePagination(options);
+    const result = yield prisma_1.default.blog.findMany({
+        skip,
+        take: limit,
+        orderBy: options.sortBy && options.sortOrder
+            ? { [options.sortBy]: options.sortOrder }
+            : {
+                createdAt: 'desc',
+            },
+    });
+    const total = yield prisma_1.default.blog.count({}); // Provide an empty object to count all blogs
+    return {
+        meta: {
+            total,
+            page,
+            limit,
+        },
+        data: result,
+    };
 });
 const getDataById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.blog.findUnique({

@@ -36,7 +36,6 @@ const insertIntoDB = (data) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return result;
 });
-// const getAllFromDB = async (
 //   filters: any,
 //   options: IPaginationOptions
 // ): Promise<IGenericResponse<Service[]>> => {

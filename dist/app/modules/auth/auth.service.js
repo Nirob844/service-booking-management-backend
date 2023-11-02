@@ -47,7 +47,29 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         refreshToken,
     };
 });
+const changePassword = (user, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const { oldPassword, newPassword } = payload;
+    // Check if the user exists
+    const existingUser = yield prisma_1.default.user.findUnique({
+        where: { id: user === null || user === void 0 ? void 0 : user.userId },
+    });
+    if (!existingUser) {
+        throw new ApiError_1.default(http_status_1.default.NOT_FOUND, 'User does not exist');
+    }
+    // Verify the old password
+    if (!(yield (0, auth_utils_1.isPasswordMatched)(oldPassword, existingUser.password))) {
+        throw new ApiError_1.default(http_status_1.default.UNAUTHORIZED, 'Old Password is incorrect');
+    }
+    // Update the password
+    yield prisma_1.default.user.update({
+        where: { id: user === null || user === void 0 ? void 0 : user.userId },
+        data: {
+            password: newPassword,
+        },
+    });
+});
 exports.AuthService = {
     insertIntoDB,
     loginUser,
+    changePassword,
 };
